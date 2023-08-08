@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Import components
 import CitySelector from '../components/CitySelector';
 import InfoWeather from '../components/InfoWeather';
 
