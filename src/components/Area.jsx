@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Circle } from "react-leaflet";
 import { Icon } from "leaflet";
-import { useEffect } from "react";
 
 const Area = ({ coordinates: { latitude, longitude } }) => {
   const icon = new Icon({
@@ -19,6 +18,7 @@ const Area = ({ coordinates: { latitude, longitude } }) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={position} icon={icon}></Marker>
+      <Circle center={position} radius={1000} />
     </MapContainer>
   );
 };
