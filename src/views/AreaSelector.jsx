@@ -5,21 +5,33 @@ import Location from '../components/Location';
 import Area from '../components/Area';
 
 const AreaSelector = () => {
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
+    const [coordinates, setCoordinates] = useState({
+        latitude: 0, longitude: 0
+    })
+
+    const updateCoordinates = (e) => {
+        setCoordinates(prev => {
+            return {
+                ...prev,
+                [e.target.name]: e.target.value
+            }
+        });
+    }
 
     useEffect(() => {
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition((position) => {
-                setLatitude(position.coords.latitude);
-                setLongitude(position.coords.longitude);
+                setCoordinates({
+                  latitude: position.coords.latitude,
+                  longitude: position.coords.longitude,
+                });
             });
         }
     }, [])
 
   return (
     <div>
-          <Location latitude={latitude} longitude={longitude} />
+          <Location coordinates={coordinates} onUpdateCoordinates={updateCoordinates} />
       <Area />
     </div>
   );
