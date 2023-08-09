@@ -1,16 +1,16 @@
 import React from 'react';
 
 // Import components
-import GeoLocation from '../components/GeoLocation';
-import AreaMap from '../components/AreaMap';
+import Location from '../components/Location';
+import Area from '../components/Area';
 
 const AreaSelector = () => {
     return (
         
         <div>
             hello! this is the Area Selector View
-            <GeoLocation />
-            <AreaMap />
+            <Location />
+            <Area />
         </div>
     );
 };

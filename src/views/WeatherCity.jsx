@@ -1,16 +1,16 @@
 import React from 'react';
 
 // Import components
-import CitySelector from '../components/CitySelector';
-import InfoWeather from '../components/InfoWeather';
+import City from "../components/City";
+import Weather from "../components/Weather";
 
 const WeatherCity = () => {
     return (
-        <div>
-            Hello! this is the weather city view
-            <CitySelector />
-            <InfoWeather />
-        </div>
+      <div>
+        Hello! this is the weather city view
+        <City />
+        <Weather />
+      </div>
     );
 };
 
