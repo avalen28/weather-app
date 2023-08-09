@@ -5,17 +5,17 @@ import Location from '../components/Location';
 import Area from '../components/Area';
 
 const AreaSelector = () => {
-    const [coordinates, setCoordinates] = useState({
-        latitude: 0, longitude: 0
-    })
+  // Nice to add, implementation that takes into account absence of coordinates
+    const [coordinates, setCoordinates] = useState(null)
 
     const updateCoordinates = (e) => {
-        const coordinateIsNumber = Number.isNaN(parseInt(e.target.value));
+        // Check if the provided value is a valid coordinate
+        const coordinateIsNumber = !Number.isNaN(parseInt(e.target.value));
         if (coordinateIsNumber) {
             setCoordinates(prev => {
                 return {
                     ...prev,
-                    [e.target.name]: e.target.value
+                    [e.target.name]: Number(e.target.value)
                 }
             });
         } else {
@@ -36,8 +36,15 @@ const AreaSelector = () => {
 
   return (
     <div>
-          <Location coordinates={coordinates} onUpdateCoordinates={updateCoordinates} />
-      <Area />
+      {coordinates && (
+        <>
+          <Location
+            coordinates={coordinates}
+            onUpdateCoordinates={updateCoordinates}
+          />
+          <Area coordinates={coordinates} />
+        </>
+      )}
     </div>
   );
 };

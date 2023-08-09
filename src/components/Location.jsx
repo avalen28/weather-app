@@ -5,7 +5,7 @@ const Location = ({
   onUpdateCoordinates
 }) => {
   return (
-    <div>
+    <div className='h-1/4'>
       <h2>Location</h2>
       <div>
         <div>
