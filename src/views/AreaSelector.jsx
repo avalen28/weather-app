@@ -10,12 +10,17 @@ const AreaSelector = () => {
     })
 
     const updateCoordinates = (e) => {
-        setCoordinates(prev => {
-            return {
-                ...prev,
-                [e.target.name]: e.target.value
-            }
-        });
+        const coordinateIsNumber = Number.isNaN(parseInt(e.target.value));
+        if (coordinateIsNumber) {
+            setCoordinates(prev => {
+                return {
+                    ...prev,
+                    [e.target.name]: e.target.value
+                }
+            });
+        } else {
+            window.alert("Please provide valid coordinates")
+        }
     }
 
     useEffect(() => {
