@@ -19,7 +19,7 @@ const AreaSelector = () => {
 
   return (
     <div>
-      <Location />
+          <Location latitude={latitude} longitude={longitude} />
       <Area />
     </div>
   );
