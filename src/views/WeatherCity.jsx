@@ -3,12 +3,12 @@ import React from 'react';
 // Import components
 import City from "../components/City";
 import Weather from "../components/Weather";
+import locations from "../data/test_locations.json";
 
 const WeatherCity = () => {
     return (
       <div>
-        Hello! this is the weather city view
-        <City />
+        <City locations={locations} />
         <Weather />
       </div>
     );

@@ -1,11 +1,17 @@
-import React from 'react';
+import React from "react";
 
-const City = () => {
-    return (
-        <div>
-            this is the city component
-        </div>
-    );
+const City = ({ locations }) => {
+  return (
+    <div>
+      <label>City</label>
+      <select name="city">
+        {locations &&
+          locations.map((location) => (
+            <option value={location.city}>{location.city}</option>
+          ))}
+      </select>
+    </div>
+  );
 };
 
 export default City;
