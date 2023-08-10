@@ -6,8 +6,8 @@ import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <div className="App-container">
+    <div>
+      <div>
         <Routes>
           {/* Route - view of Area Selector view */}
           <Route path="/area" element={<AreaSelector />} />

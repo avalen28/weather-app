@@ -35,8 +35,8 @@ const AreaSelector = () => {
     }, [])
 
   return (
-    <div>
-      <h1>Area selector</h1>
+    <div className='p-5'>
+      <h1 className="font-bold text-xl text-center py-10">Area selector</h1>
       {coordinates && (
         <>
           <Location
