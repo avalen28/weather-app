@@ -7,6 +7,7 @@ const City = ({ locations, onUpdateCity }) => {
       <select
         name="city"
         onChange={onUpdateCity}
+        required
         className="bg-sky-100 p-2 w-full rounded-md my-3"
       >
         {locations &&
