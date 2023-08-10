@@ -3,7 +3,8 @@ import axios from "axios";
 
 // 249efd60e5021ba25f979f2caac2b853
 
-const Weather = ({ currentCity }) => {
+const Weather = ({ coordinates }) => {
+  
   const API_KEY = "249efd60e5021ba25f979f2caac2b853";
   const basicWeather = {
     weather: "-",
@@ -19,34 +20,30 @@ const Weather = ({ currentCity }) => {
   const getWeatherFromAPI = async () => {
     try {
       const weatherResponse = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=${API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates[0]}&lon=${coordinates[1]}&appid=${API_KEY}`
       );
-        console.log(weatherResponse)
-       
-          const newWeatherInfo = weatherResponse.data;
-          setCurrentWeather((prev) => ({
-            ...prev,
-            weather: newWeatherInfo.weather[0].main,
-            description: newWeatherInfo.weather[0].description,
-            sunset: newWeatherInfo.sys.sunset,
-            sunrise: newWeatherInfo.sys.sunrise,
-            location: newWeatherInfo.name,
-            temperature: newWeatherInfo.main.temp,
-            feelsLike: newWeatherInfo.main.feels_like,
-            humidity: newWeatherInfo.main.humidity,
-          }));
-        
-      } catch (error) {
-      setCurrentWeather(
-        basicWeather
-        );
+        ;
+      const newWeatherInfo = weatherResponse.data;
+      setCurrentWeather((prev) => ({
+        ...prev,
+        weather: newWeatherInfo.weather[0].main,
+        description: newWeatherInfo.weather[0].description,
+        sunset: newWeatherInfo.sys.sunset,
+        sunrise: newWeatherInfo.sys.sunrise,
+        location: newWeatherInfo.name,
+        temperature: newWeatherInfo.main.temp,
+        feelsLike: newWeatherInfo.main.feels_like,
+        humidity: newWeatherInfo.main.humidity,
+      }));
+    } catch (error) {
+      setCurrentWeather(basicWeather);
       console.error(error);
     }
   };
   useEffect(() => {
     getWeatherFromAPI();
     // eslint-disable-next-line
-  }, [currentCity]);
+  }, [coordinates]);
   return (
     <div>
       <div className="block-1">

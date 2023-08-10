@@ -7,15 +7,20 @@ import Weather from "../components/Weather";
 import locations from "../data/test_locations.json";
 
 const WeatherCity = () => {
-  const [currentCity, setCurrentCity] = useState(locations[0].city)
+  const [coordinates, setCoordinates] = useState(
+    locations[0].location.coordinates
+  );
   const onUpdateCity = (e) => {
-    setCurrentCity(e.target.value)
+    const citySelected = e.target.value;
+    const infoCity = locations.find(elem => elem.city === citySelected)
+    setCoordinates(infoCity.location.coordinates);
   }
   
     return (
       <div>
+        {/* we send to City Component the json with all the cities */}
         <City locations={locations} onUpdateCity={onUpdateCity} />
-        <Weather currentCity={currentCity} />
+        <Weather coordinates={coordinates} />
       </div>
     );
 };
