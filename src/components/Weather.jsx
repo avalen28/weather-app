@@ -15,14 +15,17 @@ const Weather = ({ coordinates }) => {
     feelsLike: "-",
     humidity: "-",
   };
-  const [currentWeather, setCurrentWeather] = useState(basicWeather);
+  const [currentWeather, setCurrentWeather] = useState(null);
   const [sunsetSunrise, setSunsetSunrise] = useState(null);
+
   const getWeatherFromAPI = async () => {
     try {
       const weatherResponse = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates[0]}&lon=${coordinates[1]}&appid=${API_KEY}`
+        //The API.call includes the param units = metric. API returns temp in Celsius
+        `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates[1]}&lon=${coordinates[0]}&appid=${API_KEY}&units=metric`
       );
       const newWeatherInfo = weatherResponse.data;
+      console.log(newWeatherInfo)
       setCurrentWeather((prev) => ({
         ...prev,
         weather: newWeatherInfo.weather[0].main,
@@ -44,6 +47,7 @@ const Weather = ({ coordinates }) => {
     }
   };
 
+  //with this function we update the time from sec (milisec.) to standar hour
   const handleSunsetSunrise = (sunset, sunrise) => {
     const arrWithHours = [sunset, sunrise].map(elem => {
          const date = new Date(elem * 1000);
@@ -58,51 +62,56 @@ const Weather = ({ coordinates }) => {
     setSunsetSunrise(arrWithHours);
   };
 
+
   useEffect(() => {
     getWeatherFromAPI();
     // eslint-disable-next-line
   }, [coordinates]);
   return (
     <div>
-      <div className="block-1">
-        <img src="" alt="" />
-        <div>
-          <p>weather</p>
-          <p>{currentWeather.weather}</p>
-        </div>
-        <div>
-          <p>description</p>
-          <p>{currentWeather.description}</p>
-        </div>
-      </div>
-      <div className="block-2">
-        <div>
-          <p>sunset</p>
-          <p>{sunsetSunrise[0]}</p>
-        </div>
-        <div>
-          <p>sunrise</p>
-          <p>{sunsetSunrise[1]}</p>
-        </div>
-        <div>
-          <p>location</p>
-          <p>{currentWeather.location}</p>
-        </div>
-      </div>
-      <div className="block-3">
-        <div>
-          <p>temperature</p>
-          <p>{currentWeather.temperature}</p>
-        </div>
-        <div>
-          <p>feels like</p>
-          <p>{currentWeather.feelsLike}</p>
-        </div>
-      </div>
-      <div className="block-4">
-        <p>humidity</p>
-        <p>{currentWeather.humidity}</p>
-      </div>
+      {currentWeather && (
+        <>
+          <div className="block-1">
+            <img src="" alt="" />
+            <div>
+              <p>weather</p>
+              <p>{currentWeather.weather}</p>
+            </div>
+            <div>
+              <p>description</p>
+              <p>{currentWeather.description}</p>
+            </div>
+          </div>
+          <div className="block-2">
+            <div>
+              <p>sunset</p>
+              <p>{sunsetSunrise[0]}</p>
+            </div>
+            <div>
+              <p>sunrise</p>
+              <p>{sunsetSunrise[1]}</p>
+            </div>
+            <div>
+              <p>location</p>
+              <p>{currentWeather.location}</p>
+            </div>
+          </div>
+          <div className="block-3">
+            <div>
+              <p>temperature</p>
+              <p>{currentWeather.temperature}</p>
+            </div>
+            <div>
+              <p>feels like</p>
+              <p>{currentWeather.feelsLike}</p>
+            </div>
+          </div>
+          <div className="block-4">
+            <p>humidity</p>
+            <p>{currentWeather.humidity}</p>
+          </div>
+        </>
+      )}
     </div>
   );
 };
