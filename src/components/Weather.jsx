@@ -67,47 +67,52 @@ const Weather = ({ coordinates }) => {
   return (
     <div>
       {currentWeather && (
-        <>
-          <div className="block-1">
-            <img src="" alt="" />
+        <div className="border-2 border-solid border-sky-200 rounded-md p-4 h-64 flex flex-col justify-around">
+          <div className="border-b-2 border-solid border-b-sky-200 flex justify-start gap-5">
+            <img
+              src="./images/cloud.png"
+              alt=""
+              className="w-7 h-7 object-contain"
+            />
             <div>
-              <p>weather</p>
+              <p className="text-xs">WEATHER</p>
               <p>{currentWeather.weather}</p>
             </div>
             <div>
-              <p>description</p>
+              <p className="text-xs">DESCRIPTION</p>
+              {/* Remember to add the % */}
               <p>{currentWeather.description}</p>
             </div>
           </div>
-          <div className="block-2">
+          <div className="flex justify-start gap-5">
             <div>
-              <p>sunset</p>
+              <p className="text-xs">SUNSET</p>
               <p>{sunsetSunrise[0]}</p>
             </div>
             <div>
-              <p>sunrise</p>
+              <p className="text-xs">SUNRISE</p>
               <p>{sunsetSunrise[1]}</p>
             </div>
             <div>
-              <p>location</p>
+              <p className="text-xs">LOCATION</p>
               <p>{currentWeather.location}</p>
             </div>
           </div>
-          <div className="block-3">
+          <div className="flex justify-start gap-5">
             <div>
-              <p>temperature</p>
+              <p className="text-xs">TEMPERATURE</p>
               <p>{currentWeather.temperature}</p>
             </div>
             <div>
-              <p>feels like</p>
+              <p className="text-xs">FEELS LIKE</p>
               <p>{currentWeather.feelsLike}</p>
             </div>
           </div>
           <div className="block-4">
-            <p>humidity</p>
-            <p>{currentWeather.humidity}</p>
+            <p className="text-xs">HUMIDITY</p>
+            <p>{currentWeather.humidity} %</p>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

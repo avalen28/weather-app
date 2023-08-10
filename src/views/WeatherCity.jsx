@@ -17,7 +17,8 @@ const WeatherCity = () => {
   }
   
     return (
-      <div>
+      <div className='p-5'>
+        <h1 className="font-bold text-xl text-center py-10">Weather City</h1>
         {/* we send to City Component the json with all the cities */}
         <City locations={locations} onUpdateCity={onUpdateCity} />
         <Weather coordinates={coordinates} />
