@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-// 249efd60e5021ba25f979f2caac2b853
-
 const Weather = ({ coordinates }) => {
+  console.log(coordinates)
   const API_KEY = "249efd60e5021ba25f979f2caac2b853";
   const basicWeather = {
     weather: "-",

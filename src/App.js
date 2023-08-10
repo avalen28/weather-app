@@ -1,9 +1,8 @@
-import './App.css';
-import AreaSelector from "./views/AreaSelector.jsx"
-import WeatherCity from "./views/WeatherCity.jsx"
-import { Routes, Route } from "react-router-dom";
-
-
+import "./App.css";
+import AreaSelector from "./views/AreaSelector.jsx";
+import WeatherCity from "./views/WeatherCity.jsx";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
@@ -14,7 +13,9 @@ function App() {
           <Route path="/area" element={<AreaSelector />} />
           {/* Route - view of weather info on the city view */}
           <Route path="/weather" element={<WeatherCity />} />
+          <Route path="*" element={<Navigate to="/area" />} />
         </Routes>
+        <Navbar />
       </div>
     </div>
   );
