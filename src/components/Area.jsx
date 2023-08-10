@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Circle, useMap } from "react-leaflet";
 import { Icon } from "leaflet";
+import mapIcon from "../data/map.png";
 
 const UpdateMap = ({center, zoom, zoomControl}) => {
   // Except for its children, MapContainer props are immutable: changing them after they have been set a first
@@ -15,8 +16,7 @@ const UpdateMap = ({center, zoom, zoomControl}) => {
 const Area = ({ coordinates: { latitude, longitude } }) => {
   const [zoom, setZoom] = useState(13);
   const icon = new Icon({
-    iconUrl:
-      "https://www.citypng.com/public/uploads/preview/red-gps-location-symbol-icon-hd-png-116369431412wisxxt5bl.png",
+    iconUrl: mapIcon,
     iconSize: [38, 38],
   });
   const position = [latitude, longitude];
