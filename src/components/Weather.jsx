@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Weather = ({ coordinates }) => {
-  console.log(coordinates)
   const API_KEY = "249efd60e5021ba25f979f2caac2b853";
   const basicWeather = {
     weather: "-",
@@ -24,7 +23,6 @@ const Weather = ({ coordinates }) => {
         `https://api.openweathermap.org/data/2.5/weather?lat=${coordinates[1]}&lon=${coordinates[0]}&appid=${API_KEY}&units=metric`
       );
       const newWeatherInfo = weatherResponse.data;
-      console.log(newWeatherInfo)
       setCurrentWeather((prev) => ({
         ...prev,
         weather: newWeatherInfo.weather[0].main,

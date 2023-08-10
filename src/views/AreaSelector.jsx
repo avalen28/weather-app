@@ -36,6 +36,7 @@ const AreaSelector = () => {
 
   return (
     <div>
+      <h1>Area selector</h1>
       {coordinates && (
         <>
           <Location
