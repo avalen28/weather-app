@@ -10,6 +10,7 @@ const Weather = ({ coordinates }) => {
     sunrise: "-",
     location: "-",
     temperature: "-",
+    clouds: "-",
     feelsLike: "-",
     humidity: "-",
   };
@@ -31,6 +32,7 @@ const Weather = ({ coordinates }) => {
         sunrise: newWeatherInfo.sys.sunrise,
         location: newWeatherInfo.name,
         temperature: newWeatherInfo.main.temp,
+        clouds: newWeatherInfo.clouds.all,
         feelsLike: newWeatherInfo.main.feels_like,
         humidity: newWeatherInfo.main.humidity,
       }));
@@ -79,8 +81,7 @@ const Weather = ({ coordinates }) => {
             </div>
             <div>
               <p className="text-xs">DESCRIPTION</p>
-              {/* Remember to add the % */}
-              <p>{currentWeather.description}</p>
+              <p>{currentWeather.description}{currentWeather.clouds > 0 && ": "+currentWeather.clouds+"%"}</p>
             </div>
           </div>
           <div className="flex justify-start gap-5">
