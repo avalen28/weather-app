@@ -4,7 +4,8 @@ WeatherApp is a React-based web application that allows users to explore weather
 
 ## Recomendation 🔍
 
-Use mobile format.
+- Use mobile format.
+- The application will prompt the browser to request user permissions for obtaining geolocation. Remember to accept!
 
 ## Getting Started 🏃‍♂️
 Install dependencies
