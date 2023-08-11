@@ -53,6 +53,11 @@ The Navbar provides easy navigation between the Area Selector and Weather City s
 - Postman to test API response.
 - FontAwesome to support with icons weather info.
 
+
+##### <em>Initial schematic representation of the app (pre-development):</em>
+![Alt Text](./public/images/Initial%20schema.png)
+
+
 ## Personal decisions ✨
 Although the exercise did not specify it, I have made some personal decisions for improvement:
 
