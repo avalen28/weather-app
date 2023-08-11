@@ -50,6 +50,7 @@ The Navbar provides easy navigation between the Area Selector and Weather City s
 - react-leaflet: Library for interactive maps with Leaflet integration.
 - OpenWeatherMap API.
 - Postman to test API response.
+- FontAwesome to support with icons weather info.
 
 ## Personal decisions ✨
 Although the exercise did not specify it, I have made some personal decisions for improvement:
@@ -57,6 +58,8 @@ Although the exercise did not specify it, I have made some personal decisions fo
 - I made the API request using the provided latitude and longitude, as there is a possibility that the city name might be misspelled and the API might not recognize it (e.g., Premià written as Premiá).
 - I assumed that the user input for latitude and longitude will always be numeric. However, I have implemented some controls, such as ensuring that the input is of type "number" and that the field is required.
 - I have considered the openweather api key that was provided to be public domain, but in a real-life scenario it would have been a good practise to have keys like these private, for instance integrating the dotenv package and using the .env file to store such variables.
+- I made the API call directly since it only required a GET request. In case there had been more than one request or more than one API, I would have considered creating a service for each of the APIs, with each service having its own class and methods for each call.
+
 
 ## Improvements for the App 🚀🚀
 
