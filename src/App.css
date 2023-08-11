@@ -92,3 +92,10 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
   background: #2497E3;
 }
+
+progress[value]::-webkit-progress-bar{
+  background-color: #80c1ec;
+}
+progress[value]::-webkit-progress-value {
+    background: #2497E3;
+}

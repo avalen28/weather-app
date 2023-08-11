@@ -46,19 +46,18 @@ const Weather = ({ coordinates }) => {
 
   //with this function we update the time from sec (milisec.) to standar hour
   const handleSunsetSunrise = (sunset, sunrise) => {
-    const arrWithHours = [sunset, sunrise].map(elem => {
-         const date = new Date(elem * 1000);
+    const arrWithHours = [sunset, sunrise].map((elem) => {
+      const date = new Date(elem * 1000);
 
-         const hour = ("0" + date.getHours()).slice(-2);
-         const minutes = ("0" + date.getMinutes()).slice(-2);
+      const hour = ("0" + date.getHours()).slice(-2);
+      const minutes = ("0" + date.getMinutes()).slice(-2);
 
-         const finalHour = `${hour}:${minutes}`;
-      
+      const finalHour = `${hour}:${minutes}`;
+
       return finalHour;
     });
     setSunsetSunrise(arrWithHours);
   };
-
 
   useEffect(() => {
     getWeatherFromAPI();
@@ -108,9 +107,13 @@ const Weather = ({ coordinates }) => {
               <p>{currentWeather.feelsLike}</p>
             </div>
           </div>
-          <div className="block-4">
-            <p className="text-xs">HUMIDITY</p>
-            <p>{currentWeather.humidity} %</p>
+          <div className="flex flex-col items-end">
+            <p className="text-xs mb-2"> {currentWeather.humidity}% humidity</p>
+            <progress
+              className="w-full border-2 border-solid border-sky-200 rounded-md h-3"
+              max="100"
+              value={currentWeather.humidity}
+            ></progress>
           </div>
         </div>
       )}
