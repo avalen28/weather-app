@@ -1,5 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCloud,
+  faCloudRain,
+  faCloudShowersHeavy,
+  faBolt,
+  faSnowflake,
+  faCloudSun,
+  faWind,
+  faSmog,
+  faSun,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Weather = ({ coordinates }) => {
   const API_KEY = "249efd60e5021ba25f979f2caac2b853";
@@ -14,8 +26,55 @@ const Weather = ({ coordinates }) => {
     feelsLike: "-",
     humidity: "-",
   };
+
+  //Here we have an array with all the options that the api can return it (sun, cloud, heavy rain... )
+  // and every icon for this situation.
+  const icons = [
+    {
+      type: "Rain",
+      icon: faCloudRain,
+    },
+    {
+      type: "Clear",
+      icon: faSun,
+    },
+    {
+      type: "Clouds",
+      icon: faCloud,
+    },
+    {
+      type: "Bolt",
+      icon: faBolt,
+    },
+    {
+      type: "HeavyRain",
+      icon: faCloudShowersHeavy,
+    },
+    {
+      type: "Snow",
+      icon: faSnowflake,
+    },
+    {
+      type: "CloudSun",
+      icon: faCloudSun,
+    },
+    {
+      type: "Wind",
+      icon: faWind,
+    },
+    {
+      type: "Mist",
+      icon: faSmog,
+    },
+    {
+      type: "Haze",
+      icon: faSmog,
+    },
+  ];
+
   const [currentWeather, setCurrentWeather] = useState(null);
   const [sunsetSunrise, setSunsetSunrise] = useState(null);
+  const [weatherIcon, setWeatherIcon] = useState(null);
 
   const getWeatherFromAPI = async () => {
     try {
@@ -36,6 +95,7 @@ const Weather = ({ coordinates }) => {
         feelsLike: newWeatherInfo.main.feels_like,
         humidity: newWeatherInfo.main.humidity,
       }));
+      handleWeatherIcon(newWeatherInfo.weather[0].main);
       handleSunsetSunrise(
         newWeatherInfo.sys.sunset,
         newWeatherInfo.sys.sunrise
@@ -61,6 +121,12 @@ const Weather = ({ coordinates }) => {
     setSunsetSunrise(arrWithHours);
   };
 
+  // with this function find the relation icon - weather status
+  const handleWeatherIcon = (weather) => {
+    const result = icons.find((elem) => elem.type === weather);
+    setWeatherIcon(result);
+  };
+
   useEffect(() => {
     getWeatherFromAPI();
     // eslint-disable-next-line
@@ -69,11 +135,15 @@ const Weather = ({ coordinates }) => {
     <div>
       {currentWeather && (
         <div className="border-2 border-solid border-sky-200 rounded-md p-4 h-64 flex flex-col justify-around">
-          <div className="border-b-2 border-solid border-b-sky-200 flex justify-start gap-5">
-            <img
-              src="./images/cloud.png"
+          <div className="border-b-2 border-solid border-b-sky-200 flex justify-start gap-5 pb-2">
+            {/* <p
+              src="./images/sun.png"
               alt=""
               className="w-7 h-7 object-contain"
+            /> */}
+            <FontAwesomeIcon
+              icon={weatherIcon.icon}
+              className="text-gray-300 border-2 border-solid border-gray-300 p-2 rounded-full"
             />
             <div>
               <p className="text-xs">WEATHER</p>
@@ -81,7 +151,11 @@ const Weather = ({ coordinates }) => {
             </div>
             <div>
               <p className="text-xs">DESCRIPTION</p>
-              <p>{currentWeather.description}{currentWeather.clouds > 0 && ": "+currentWeather.clouds+"%"}</p>
+              <p>
+                {currentWeather.description}
+                {currentWeather.clouds > 0 &&
+                  ": " + currentWeather.clouds + "%"}
+              </p>
             </div>
           </div>
           <div className="flex justify-start gap-5">
