@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,5 +45,12 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.3.3"
+  },
+  "jest": {
+    "coverageThreshold": {
+        "global": {
+            "lines": 80
+        }
+    }
   }
 }
