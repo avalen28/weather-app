@@ -78,4 +78,4 @@ I have greatly enjoyed building this app; it has been a lot of fun! However, if 
 
 It has really been a happy coding time! 💻
 
-![Alt Text](https://i.gifer.com/7VJ3.gif)
+<img src="https://i.gifer.com/7VJ3.gif" width="350" height="300" alt="weather-cat">
