@@ -127,6 +127,8 @@ const Weather = ({ coordinates }) => {
     setWeatherIcon(result);
   };
 
+ 
+
   useEffect(() => {
     getWeatherFromAPI();
     // eslint-disable-next-line
@@ -192,6 +194,7 @@ const Weather = ({ coordinates }) => {
           </div>
         </div>
       )}
+      
     </div>
   );
 };

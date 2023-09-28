@@ -1,6 +1,7 @@
 import React from "react";
 
 const City = ({ locations, onUpdateCity }) => {
+  console.log(locations)
   return (
     <div className="flex flex-col">
       <label className="font-semibold text-lg">City</label>
