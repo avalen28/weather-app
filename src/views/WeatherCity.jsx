@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 // Import components
 import City from "../components/City";

@@ -34,7 +34,7 @@ const AreaSelector = ({ handleSelfGeoLoc }) => {
         handleSelfGeoLoc(userCoordinates);
       });
     }
-  }, []);
+  }, [handleSelfGeoLoc]);
 
   return (
     <div className="p-5">
